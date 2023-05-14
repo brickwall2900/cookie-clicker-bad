@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    // https://mvnrepository.com/artifact/com.formdev/flatlaf
+    implementation 'com.formdev:flatlaf:3.1.1'
+    implementation 'com.formdev:flatlaf-extras:3.1.1'
+
+//    // some fishy FLAC audio decoder :)
+//    implementation 'drogatkin:JustFLAC:0.0.1-SNAPSHOT'
+
+    // a vorbis OGG decoder? (that didn't work)
+    implementation 'com.googlecode.soundlibs:vorbisspi:1.0.3.3'
+
+    // mp3 decoder?
+    implementation 'com.googlecode.soundlibs:mp3spi:1.9.5.4'
+
+//     https://mvnrepository.com/artifact/org.apache.commons/commons-compress
+//    implementation 'org.apache.commons:commons-compress:1.23.0'
+
+}
+
+test {
+    useJUnitPlatform()
+}
