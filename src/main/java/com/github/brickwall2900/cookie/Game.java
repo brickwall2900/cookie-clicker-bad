@@ -347,6 +347,14 @@ public class Game implements Consumer<Graphics2D>, ActionListener, WindowListene
 
     public void createSave(String name) {
         saveName = name;
+        renderTime = 60;
+        renderQuality = 5;
+        autoSaveNotifications = false;
+        autoSaveTimer = Integer.MAX_VALUE;
+        enableFpsCounter = false;
+        darkMode = true;
+        clicks.set(0);
+        timePlayed = 0;
         savedSettings = new SaveFile.SavedSettings(
                 renderTime,
                 renderQuality,
@@ -390,7 +398,7 @@ public class Game implements Consumer<Graphics2D>, ActionListener, WindowListene
 
     private float cookieRotation = 0f;
 
-    private final AtomicLong clicks = new AtomicLong(2_000_000_000_000_000L);
+    private final AtomicLong clicks = new AtomicLong(0);
 
     private AffineTransform cookieTransform;
 
@@ -667,7 +675,10 @@ public class Game implements Consumer<Graphics2D>, ActionListener, WindowListene
                         return ShopError.TOO_MANY_INSTANCES;
                     }
                 }
-                clicks.addAndGet(-requiredClicks);
+//                clicks.addAndGet(-requiredClicks);
+                long clicks1 = clicks.get();
+                clicks1 = clicks1 - requiredClicks;
+                clicks.set(clicks1);
                 return ShopError.SUCCESS;
             } else {
                 return ShopError.NOT_ENOUGH_CLICKS;

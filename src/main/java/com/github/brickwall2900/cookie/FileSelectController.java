@@ -1,10 +1,12 @@
 package com.github.brickwall2900.cookie;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FileSelectController implements ActionListener {
+public class FileSelectController implements ActionListener, ListSelectionListener {
     private final FileSelectWindow fileSelectWindow;
     private final SaveFile saveFile;
 
@@ -16,6 +18,8 @@ public class FileSelectController implements ActionListener {
         fileSelectWindow.createButton.addActionListener(this);
         fileSelectWindow.openButton.addActionListener(this);
         fileSelectWindow.deleteButton.addActionListener(this);
+
+        fileSelectWindow.fileList.addListSelectionListener(this);
     }
 
     public void initText() {
@@ -90,6 +94,13 @@ public class FileSelectController implements ActionListener {
             onFileOpen();
         } else if (e.getSource().equals(fileSelectWindow.deleteButton)) {
             onFileDelete();
+        } else if (e.getSource().equals(fileSelectWindow.fileList)) {
+            onFileOpen();
         }
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+//        onFileOpen();
     }
 }

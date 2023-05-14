@@ -3,8 +3,7 @@ package com.github.brickwall2900.cookie;
 
 import com.github.brickwall2900.cookie.items.ItemDescription;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.*;
 import javax.swing.*;
 import java.io.Serial;
 import javax.swing.table.DefaultTableModel;
@@ -38,6 +37,7 @@ public class GameWindow extends javax.swing.JFrame {
         canvasPanel.setBorder(BorderFactory.createTitledBorder("Cookie"));
         canvasPanel.setPreferredSize(new Dimension(668, 480));
         canvasPanel.setLayout(new BorderLayout());
+        canvasPanel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         splitPane.setLeftComponent(canvasPanel);
 
         menuPanel.setBorder(BorderFactory.createTitledBorder("Menu"));
