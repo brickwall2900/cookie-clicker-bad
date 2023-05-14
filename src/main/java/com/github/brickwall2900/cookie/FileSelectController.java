@@ -30,16 +30,13 @@ public class FileSelectController implements ActionListener, ListSelectionListen
         fileSelectWindow.openButton.setText(Game.GAME.getText("game.file.button.open"));
         fileSelectWindow.createButton.setText(Game.GAME.getText("game.file.button.create"));
         fileSelectWindow.deleteButton.setText(Game.GAME.getText("game.file.button.delete"));
-//        fileSelectWindow.settingsButton.setText(Game.GAME.getText("game.file.button.settings"));
 
         ((DefaultListModel<String>) fileSelectWindow.fileList.getModel()).removeAllElements();
         for (String name : saveFile.listSaves()) {
             ((DefaultListModel<String>) fileSelectWindow.fileList.getModel()).addElement(name);
         }
 
-        Game.GAME.getSoundSystem().loopBackgroundMusic("game.file.theme", -1);
-//        Game.GAME.getSoundSystem().loopBackgroundMusic("game.midi.test", -1);
-//        Game.GAME.getSoundSystem().playInstancedAudio("game.midi.test");
+        Game.GAME.getSoundSystem().loopBackgroundMusic("game.file.theme", -1); // -1 loops means Clip.LOOP_CONTINUOUSLY
     }
 
     public void onFileCreate() {

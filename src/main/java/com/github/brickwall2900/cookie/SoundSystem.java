@@ -11,6 +11,10 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.zip.GZIPInputStream;
 
+/*
+ * TRIGGER WARNING!
+ * Danger ahead!
+ */
 public class SoundSystem extends Thread {
     private final Properties properties = new Properties();
     private final HashMap<String, AudioInformation> textIdCached = new HashMap<>();
@@ -52,7 +56,6 @@ public class SoundSystem extends Thread {
             while (running) {
                 final Command command = queue.poll(1, TimeUnit.SECONDS);
                 if (command != null) {
-//                    System.out.println("[!] COMMAND FOUND!! (" + command + ")");
                     switch (command.command) {
                         case PlayInstancedAudio ->
                             playInstancedAudioI((String) command.parameters[0]);
@@ -98,7 +101,6 @@ public class SoundSystem extends Thread {
             }
             String name = textInfo[0];
             DataType type = DataType.valueOf(textInfo[1].toUpperCase(Locale.ROOT));
-//            System.out.println(Arrays.toString(textInfo));
             if (!type.equals(DataType.MIDI)) {
                 minimumNumber = 7;
                 if (textInfo.length < minimumNumber) {
@@ -188,8 +190,6 @@ public class SoundSystem extends Thread {
     }
 
     public void loopBackgroundMusic(String textId, int loops) {
-//        StackWalker stackWalker = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
-//        System.out.println("loopBackgroundMusic caller " + stackWalker.getCallerClass());
         addCommand(new Command(SSCommand.LoopBackgroundMusic, new Object[] {textId, loops}));
     }
 
@@ -201,19 +201,6 @@ public class SoundSystem extends Thread {
     private final AudioFormat dummyFormat = new AudioFormat(44100, 8, 1, true, false);
 
     public boolean isBackgroundMusicEnded() {
-//        System.out.println("1 " + (backgroundMusic != null && backgroundMidiMusic != null));
-//        System.out.println("2 " + backgroundMusicEnded);
-//        if (backgroundMidiMusic != null) {
-//            System.out.println("3 " + !backgroundMidiMusic.isRunning());
-//            if (backgroundMusicInfo != null) {
-//                System.out.println("4 " + (backgroundMusicInfo.dataType != DataType.MIDI ? backgroundMusicEnded : !backgroundMidiMusic.isRunning()));
-//            }
-//        }
-//        System.out.println("5 " + ((backgroundMusic != null && backgroundMidiMusic != null) && (backgroundMusicInfo.dataType != DataType.MIDI ? backgroundMusicEnded : !backgroundMidiMusic.isRunning())));
-//        if (((backgroundMusic != null && backgroundMidiMusic != null) && (backgroundMusicInfo.dataType != DataType.MIDI ? backgroundMusicEnded : !backgroundMidiMusic.isRunning()))) {
-//            System.out.println("ENDED --- ENDED");
-//        }
-//        System.out.println("00-000-0-0--000--0-");
         return (backgroundMusic != null && backgroundMidiMusic != null) && (backgroundMusicInfo.dataType != DataType.MIDI ? backgroundMusicEnded : !backgroundMidiMusic.isRunning());
     }
 
@@ -239,15 +226,6 @@ public class SoundSystem extends Thread {
             backgroundMidiMusic.stop();
             backgroundMidiMusic.close();
         }
-
-//        System.out.println("-----------------------------------------");
-////        StackWalker stackWalker = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE);
-////        System.out.println("caller: " + stackWalker.getCallerClass());
-//        System.out.println(backgroundMusic);
-//        System.out.println(backgroundMidiMusic);
-//        System.out.println((backgroundMusic == null && backgroundMidiMusic == null));
-//        System.out.println(backgroundMusicInfo);
-//        System.out.println(textId);
 
         if (textId != null) {
             AudioInformation info = getAudioInformation(textId);
@@ -361,6 +339,7 @@ public class SoundSystem extends Thread {
     public enum DataType {
         RAW, COMPRESSED, FORMATTED, MIDI;
 
+        // TODO
         public void handle(AudioInformation info, ClassResource resource) {
             throw new UnsupportedOperationException();
         }

@@ -9,6 +9,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Locale;
 
+// yeah, just give this all away whatever lol
 public class SoftId {
     private static final SoftId id = new SoftId();
 
@@ -37,37 +38,6 @@ public class SoftId {
         }
         long id = 0;
         try {
-//            id = getMethodClId(getMethodName(SoftId.class, "getSoftId"));
-//            id = 37 * id + getMethodClId(getMethodName(SoftId.class, "getMethodName"));
-//            id = 37 * id + getMethodClId(getMethodName(SoftId.class, "getMethodClId"));
-//            id = 37 * id + getMethodClId(getMethodName(SoftId.class, "getClId"));
-//            id = 37 * id + getMethodClId(getMethodName(SoftId.class, "getLoaderClId"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "loadStage1"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "loadStage2"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "loadStage3"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "loadStage4"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "saveStage1"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "saveStage2"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "saveStage3"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "saveStage4"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "getNameStage1"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "getNameStage2"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "loadSave"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "save"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "encrypt"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "decrypt"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "generateBIv"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "deleteSave"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "getFileOnName"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "panicOnLoad"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "getNameOnFile"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "listSaves"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "doesSaveExist"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "bytesToHex"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "longToBytes"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "bytesToChars"));
-//            id = 37 * id + getMethodClId(getMethodName(SaveFile.class, "decrypt"));
-//            id = 37 * id + getFieldClId(getFieldName(SaveFile.class, "SAVE_FILE_DIRECTORY"));
             id = 37 + id + getClId(SaveFile.class, 0);
             id = 37 * id + getClId(SoftId.class, 0);
             id = 37 * id + getClId(Game.class, 0);

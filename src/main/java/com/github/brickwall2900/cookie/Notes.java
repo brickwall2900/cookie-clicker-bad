@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class Notes {
     public static final HashMap<Integer, Note> NOTE_FREQ_NAME_MAP = new HashMap<>();
 
-    static { // ;)
+    static { // yes ;)
         int nn = 89;
         NOTE_FREQ_NAME_MAP.put(nn, new Note("C0", nn++));
         NOTE_FREQ_NAME_MAP.put(nn, new Note("C#0", nn++));
@@ -122,6 +122,7 @@ public class Notes {
 
     public static final float CONCERT_PITCH = 440;
 
+    // more suffering >:)
     // <editor-fold defaultstate="collapsed" desc="Midi Note to Key Map">
     public static int[] MIDI_NOTE_TO_KEY = new int[] {
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -248,22 +249,7 @@ public class Notes {
         return (float) Math.pow(base, 1f / index);
     }
 
-    private static int getNoteNumber(String noteName, int octave) {
-        char[] chars = noteName.toCharArray();
-        char note = 0;
-        char currentChar;
-        boolean sharp;
-        for (int i = 0; i < chars.length; i++) {
-            currentChar = chars[i];
-            if (Pattern.matches("[A-G]", String.valueOf(currentChar))) {
-                note = currentChar;
-            } else if (Pattern.matches("[#b]", String.valueOf(currentChar))) {
-                sharp = true;
-            }
-        }
-        return -0;
-    }
-
+    // TODO: why not a record??
     public static class Note {
         private String name;
         private int number;
